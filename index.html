@@ -2011,7 +2011,6 @@
                 const sportsData = await firebaseStorage.get('sports');
                 const gamesData = await firebaseStorage.get('games');
                 const profilesData = await firebaseStorage.get('profiles');
-                const currentUserData = await firebaseStorage.get('currentUser');
                 const notificationsData = await firebaseStorage.get('notifications');
                 const practiceData = await firebaseStorage.get('practiceHistory');
                 
@@ -2029,16 +2028,20 @@
                 // Update profile select dropdown
                 updateProfileSelect();
                 
-                // If user was logged in, auto-login
-                if (currentUserData) {
-                    const userName = JSON.parse(currentUserData.value);
-                    const user = state.profiles.find(p => p.name === userName);
-                    if (user) {
-                        state.currentUser = user;
-                        showMainApp();
-                    } else {
+                // Always show login screen - pre-select last user from this device
+                const lastUser = localStorage.getItem('champion_lastUser');
+                if (lastUser) {
+                    const selectEl = document.getElementById('profile-select');
+                    if (selectEl) {
+                        for (let i = 0; i < selectEl.options.length; i++) {
+                            if (selectEl.options[i].value === lastUser) {
+                                selectEl.selectedIndex = i;
+                                break;
+                            }
+                        }
                     }
                 }
+                document.getElementById('login-screen').classList.remove('hidden');
                 
                 updateUI();
                 renderPracticeHistory();
@@ -2055,9 +2058,6 @@
                 await firebaseStorage.set('sports', JSON.stringify(state.sports));
                 await firebaseStorage.set('games', JSON.stringify(state.games));
                 await firebaseStorage.set('profiles', JSON.stringify(state.profiles));
-                if (state.currentUser) {
-                    await firebaseStorage.set('currentUser', JSON.stringify(state.currentUser.name));
-                }
                 await firebaseStorage.set('notifications', JSON.stringify(state.notifications));
                 console.log('✅ Data saved successfully to Firebase');
             } catch (error) {
@@ -2154,6 +2154,9 @@
             document.getElementById('current-user-name').textContent = state.currentUser.name;
             document.getElementById('current-user-email').textContent = state.currentUser.email || 'No email set';
             
+            // Remember last user on this device
+            localStorage.setItem('champion_lastUser', state.currentUser.name);
+            
             updateUserStats();
             updateProfileDatalist();
             renderPokerProfileButtons();
@@ -2162,6 +2165,7 @@
         async function logoutUser() {
             if (confirm('Are you sure you want to logout?')) {
                 state.currentUser = null;
+                localStorage.removeItem('champion_lastUser');
                 try {
                     await firebaseStorage.delete('currentUser');
                 } catch (error) {
@@ -2768,6 +2772,15 @@
 
             if (!p1Name || !p2Name) {
                 alert('Please enter both player names');
+                return;
+            }
+
+            // Validate players have profiles
+            const profileNames = state.profiles.map(p => p.name);
+            const allNames = state.gameType === 'singles' ? [p1Name, p2Name] : [...state.team1Players, ...state.team2Players];
+            const missing = allNames.find(n => !profileNames.includes(n));
+            if (missing) {
+                alert(`"${missing}" doesn't have a profile. Create one in Settings first.`);
                 return;
             }
 
@@ -4007,9 +4020,28 @@
                     alert('Please enter both player names');
                     return;
                 }
+                
+                // Validate players have profiles
+                const profileNames = state.profiles.map(p => p.name);
+                if (!profileNames.includes(player1)) {
+                    alert(`"${player1}" doesn't have a profile. Create one in Settings first.`);
+                    return;
+                }
+                if (!profileNames.includes(player2)) {
+                    alert(`"${player2}" doesn't have a profile. Create one in Settings first.`);
+                    return;
+                }
             } else {
                 if (state.team1Players.length === 0 || state.team2Players.length === 0) {
                     alert('Please add players to both teams');
+                    return;
+                }
+                // Validate all team players have profiles
+                const profileNames = state.profiles.map(p => p.name);
+                const allTeamPlayers = [...state.team1Players, ...state.team2Players];
+                const missing = allTeamPlayers.find(p => !profileNames.includes(p));
+                if (missing) {
+                    alert(`"${missing}" doesn't have a profile. Create one in Settings first.`);
                     return;
                 }
                 player1 = state.team1Players.join(', ');
@@ -4407,6 +4439,7 @@
                 await firebaseStorage.delete('currentUser');
                 await firebaseStorage.delete('notifications');
                 await firebaseStorage.delete('practiceHistory');
+                localStorage.removeItem('champion_lastUser');
                 state.sports = ['Darts', 'Pool-US', 'Pool-UK', 'Badminton', 'Poker'];
                 state.games = [];
                 state.practiceHistory = [];
