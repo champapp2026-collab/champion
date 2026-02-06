@@ -511,229 +511,6 @@
             background-color: var(--bg-main);
         }
 
-        .poker-player-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: var(--bg-main);
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .bought-in {
-            color: var(--accent-green);
-            font-weight: 600;
-        }
-
-        .no-buyin {
-            color: var(--text-secondary);
-        }
-
-        /* Poker Theme */
-        .poker-header {
-            position: relative;
-            text-align: center;
-            padding: 20px 15px 15px;
-            background: linear-gradient(135deg, #1a472a 0%, #0d2818 50%, #1a472a 100%);
-            border-radius: 14px;
-            border: 2px solid #2d6b45;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .poker-header::before {
-            content: '♠ ♥ ♣ ♦';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            letter-spacing: 20px;
-            opacity: 0.04;
-            color: white;
-            pointer-events: none;
-        }
-        .poker-header h3 {
-            font-family: 'Bangers', cursive;
-            font-size: 1.6rem;
-            letter-spacing: 2px;
-            color: #f0d060;
-            margin: 0;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        .poker-suits-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 8px;
-            font-size: 1.2rem;
-            position: relative;
-        }
-        .poker-suits-row span { opacity: 0.7; }
-        .suit-spade { color: #e0e0e0; }
-        .suit-heart { color: #e74c3c; }
-        .suit-club { color: #e0e0e0; }
-        .suit-diamond { color: #e74c3c; }
-
-        .poker-field {
-            background: linear-gradient(180deg, #1a472a 0%, #145a30 100%);
-            border: 2px solid #2d6b45;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        .poker-field label {
-            color: #c8e6c9 !important;
-        }
-        .poker-field input {
-            background: rgba(0,0,0,0.3) !important;
-            border-color: #2d6b45 !important;
-            color: #f0f0f0 !important;
-        }
-        .poker-field input::placeholder {
-            color: rgba(200,230,200,0.4) !important;
-        }
-
-        .poker-summary-bar {
-            background: linear-gradient(135deg, #1a472a, #0d2818);
-            border: 2px solid #2d6b45;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-        .poker-summary-bar::after {
-            content: '♠';
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 4rem;
-            opacity: 0.06;
-            color: white;
-            pointer-events: none;
-        }
-
-        .poker-player-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 15px;
-            background: linear-gradient(135deg, #1a472a, #0f3320);
-            border-radius: 10px;
-            margin-bottom: 8px;
-            border: 1px solid #2d6b45;
-            position: relative;
-            overflow: hidden;
-        }
-        .poker-player-card::before {
-            content: attr(data-suit);
-            position: absolute;
-            right: 70px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2.5rem;
-            opacity: 0.07;
-            pointer-events: none;
-        }
-        .poker-player-paid {
-            border-left: 4px solid #4caf50;
-        }
-        .poker-player-unpaid {
-            border-left: 4px solid #ff9800;
-        }
-
-        .poker-btn {
-            background: linear-gradient(135deg, #2d6b45, #1a472a) !important;
-            border: 1px solid #3d8b5a !important;
-            color: #f0d060 !important;
-            font-weight: 700;
-        }
-        .poker-btn:hover {
-            background: linear-gradient(135deg, #3d8b5a, #2d6b45) !important;
-        }
-
-        .poker-ace {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 38px;
-            background: white;
-            color: #1a1a2e;
-            border-radius: 4px;
-            font-weight: 900;
-            font-size: 0.75rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            flex-shrink: 0;
-            line-height: 1;
-        }
-        .poker-ace.red { color: #e74c3c; }
-
-        .poker-empty-table {
-            text-align: center;
-            padding: 30px 15px;
-            color: #6b8f7b;
-            background: linear-gradient(135deg, #1a472a, #0d2818);
-            border: 2px dashed #2d6b45;
-            border-radius: 12px;
-        }
-
-        .poker-hand-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 12px;
-            border-radius: 8px;
-            margin-bottom: 4px;
-            cursor: pointer;
-            transition: background 0.15s;
-            border: 1px solid transparent;
-        }
-        .poker-hand-row:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: #2d6b45;
-        }
-        .poker-hand-rank {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #f0d060, #d4a520);
-            color: #1a1a2e;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 0.75rem;
-            flex-shrink: 0;
-        }
-        .poker-hand-info {
-            flex: 1;
-        }
-        .poker-hand-name {
-            font-weight: 700;
-            color: #f0f0f0;
-            font-size: 0.9rem;
-        }
-        .poker-hand-cards {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-top: 2px;
-            font-weight: 600;
-        }
-        .poker-hand-detail {
-            font-size: 0.75rem;
-            color: #8fbc8f;
-            margin-top: 4px;
-            line-height: 1.4;
-            padding: 6px 0 2px;
-            border-top: 1px solid rgba(45,107,69,0.3);
-        }
-
         /* Modal for rules */
         .modal {
             display: none;
@@ -796,57 +573,91 @@
 <body>
     <!-- Login/Welcome Screen -->
     <!-- Group Code Screen -->
-    <div id="group-code-screen" class="content" style="max-width: 500px; margin: 100px auto;">
-        <div class="card" style="text-align: center;">
-            <h2 style="margin-bottom: 10px; color: var(--accent-gold);">🔐 Group Code</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 25px;">Enter your group's secret code to access the app. Share this code with your mates — everyone uses the same one.</p>
+    <div id="group-code-screen" class="content" style="max-width: 440px; margin: 0 auto; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div style="font-size: 3.5rem; margin-bottom: 8px;">🏆</div>
+            <h1 style="font-family: 'Bangers', cursive; font-size: 2.2rem; color: var(--accent-gold); letter-spacing: 2px; margin: 0;">CHAMPION OF CHAMPIONS</h1>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px;">Track. Compete. Conquer.</p>
+        </div>
+
+        <div class="card" style="text-align: center; border: 2px solid var(--border); padding: 30px 24px;">
+            <h2 style="margin: 0 0 8px; color: var(--text-primary); font-size: 1.2rem;">Enter Group Code</h2>
+            <p style="color: var(--text-secondary); font-size: 0.8rem; margin: 0 0 24px;">Everyone in your group uses the same code to share data.</p>
             
-            <div class="form-group">
-                <label>Secret Code (min 6 characters)</label>
-                <input type="password" id="group-code-input" placeholder="Enter your group code" style="text-align: center; font-size: 1.1rem; letter-spacing: 2px;" onkeypress="if(event.key==='Enter')submitGroupCode()">
+            <div style="margin-bottom: 16px;">
+                <input type="password" id="group-code-input" placeholder="e.g. ChampSquad99" 
+                    style="text-align: center; font-size: 1.2rem; letter-spacing: 2px; padding: 16px; border-radius: 12px; width: 100%; box-sizing: border-box;" 
+                    onkeypress="if(event.key==='Enter')submitGroupCode()">
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 20px;">
-                <input type="checkbox" id="show-code-toggle" onchange="toggleCodeVisibility()" style="width: auto;">
-                <label for="show-code-toggle" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Show code</label>
+            
+            <div style="display: flex; align-items: center; gap: 8px; justify-content: center; margin-bottom: 24px;">
+                <input type="checkbox" id="show-code-toggle" onchange="toggleCodeVisibility()" style="width: auto; margin: 0;">
+                <label for="show-code-toggle" style="color: var(--text-secondary); font-size: 0.8rem; margin: 0; cursor: pointer;">Show code</label>
             </div>
-            <button class="btn" onclick="submitGroupCode()">Enter</button>
-            <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 15px;">First time? Make up a code and share it with your group.<br>Your data is stored privately under this code.</p>
+            
+            <button class="btn" onclick="submitGroupCode()" style="width: 100%; padding: 16px; font-size: 1.05rem; border-radius: 12px;">Let's Go 🎯</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 24px; padding: 0 10px;">
+            <p style="color: var(--text-secondary); font-size: 0.75rem; line-height: 1.5;">
+                <strong style="color: var(--text-primary);">First time?</strong> Make up a code (min 6 characters) and share it with your mates.
+            </p>
         </div>
     </div>
 
-    <div id="login-screen" class="content hidden" style="max-width: 500px; margin: 100px auto;">
-        <div class="card" style="text-align: center;">
-            <h2 style="margin-bottom: 30px; color: var(--accent-gold);">Welcome Back!</h2>
-            
+    <!-- Login Screen -->
+    <div id="login-screen" class="content hidden" style="max-width: 440px; margin: 0 auto; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="font-size: 3rem; margin-bottom: 4px;">🏆</div>
+            <h1 style="font-family: 'Bangers', cursive; font-size: 1.8rem; color: var(--accent-gold); letter-spacing: 2px; margin: 0;">CHAMPION OF CHAMPIONS</h1>
+        </div>
+
+        <div class="card" style="border: 2px solid var(--border); padding: 28px 24px;">
             <div id="login-form">
-                <div class="form-group">
-                    <label>Select Your Profile</label>
-                    <select id="profile-select" style="margin-bottom: 15px;">
-                        <option value="">-- Choose Profile --</option>
-                    </select>
-                    <button class="btn" onclick="loginUser()">Login</button>
+                <h2 style="margin: 0 0 20px; color: var(--text-primary); font-size: 1.15rem; text-align: center;">Who's playing?</h2>
+                
+                <!-- Profile Buttons Grid -->
+                <div id="profile-buttons-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;"></div>
+                
+                <!-- No profiles message -->
+                <div id="no-profiles-msg" class="hidden" style="text-align: center; padding: 20px; color: var(--text-secondary); font-size: 0.9rem;">
+                    No profiles yet — create one below to get started! 👇
                 </div>
                 
-                <div style="margin: 30px 0; color: var(--text-secondary);">OR</div>
+                <!-- Hidden select for compatibility -->
+                <select id="profile-select" style="display: none;">
+                    <option value="">-- Choose Profile --</option>
+                </select>
                 
-                <button class="btn btn-secondary" onclick="showCreateProfile()">Create New Profile</button>
+                <div style="position: relative; text-align: center; margin: 24px 0;">
+                    <div style="border-top: 1px solid var(--border); position: absolute; top: 50%; left: 0; right: 0;"></div>
+                    <span style="background: var(--bg-card); padding: 0 16px; position: relative; color: var(--text-secondary); font-size: 0.8rem;">new here?</span>
+                </div>
+                
+                <button class="btn btn-secondary" onclick="showCreateProfile()" style="width: 100%; padding: 14px; border-radius: 12px; font-size: 0.95rem;">+ Create New Profile</button>
             </div>
 
-            <!-- Create Profile Form -->
             <div id="create-profile-form" class="hidden">
-                <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" id="new-user-name" placeholder="Enter your name">
+                <h2 style="margin: 0 0 8px; color: var(--text-primary); font-size: 1.15rem; text-align: center;">Create Your Profile</h2>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; text-align: center; margin: 0 0 24px;">This is how you'll appear on the leaderboard.</p>
+                
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label style="font-size: 0.8rem; margin-bottom: 6px;">Your Name</label>
+                    <input type="text" id="new-user-name" placeholder="e.g. Jake" style="padding: 14px; border-radius: 10px; font-size: 1rem;">
                 </div>
 
-                <div class="form-group">
-                    <label>Email (Optional)</label>
-                    <input type="email" id="new-user-email" placeholder="your@email.com">
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <label style="font-size: 0.8rem; margin-bottom: 6px;">Email <span style="color: var(--text-secondary);">(optional)</span></label>
+                    <input type="email" id="new-user-email" placeholder="your@email.com" style="padding: 14px; border-radius: 10px; font-size: 1rem;">
                 </div>
 
-                <button class="btn" onclick="createProfile()">Create Profile</button>
-                <button class="btn btn-secondary" onclick="cancelCreateProfile()">Cancel</button>
+                <button class="btn" onclick="createProfile()" style="width: 100%; padding: 16px; border-radius: 12px; font-size: 1.05rem; margin-bottom: 10px;">Create & Start 🚀</button>
+                <button class="btn btn-secondary" onclick="cancelCreateProfile()" style="width: 100%; padding: 12px; border-radius: 12px; font-size: 0.9rem;">← Back</button>
             </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 16px;">
+            <button onclick="changeGroupCode()" style="background: none; border: none; color: var(--text-secondary); font-size: 0.75rem; cursor: pointer; text-decoration: underline;">Switch group code</button>
         </div>
     </div>
 
@@ -931,10 +742,6 @@
                         <div class="sport-btn" data-sport="Badminton">
                             🏸 Badminton
                             <button class="info-btn" onclick="showRules('Badminton')" title="View rules">ⓘ</button>
-                        </div>
-                        <div class="sport-btn" data-sport="Poker">
-                            🃏 Poker
-                            <button class="info-btn" onclick="showRules('Poker')" title="View rules">ⓘ</button>
                         </div>
                         <div class="sport-btn" data-sport="Custom">➕ Add Sport</div>
                     </div>
@@ -1089,241 +896,6 @@
                     </div>
                 </div>
 
-                <!-- Poker Specific -->
-                <div id="poker-scoring" class="darts-section hidden">
-                    
-                    <!-- Poker Header -->
-                    <div class="poker-header">
-                        <h3>♠ Poker Night ♥</h3>
-                        <div class="poker-suits-row">
-                            <span class="suit-spade">♠</span>
-                            <span class="suit-heart">♥</span>
-                            <span class="suit-club">♣</span>
-                            <span class="suit-diamond">♦</span>
-                        </div>
-                    </div>
-
-                    <!-- Poker Rules Viewer -->
-                    <div style="margin-bottom: 20px;">
-                        <button class="btn poker-btn" onclick="togglePokerRules()" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px;">
-                            <span>📜 Poker Night Rules</span>
-                            <span id="poker-rules-arrow" style="transition: transform 0.2s;">▼</span>
-                        </button>
-                        <div id="poker-rules-panel" class="hidden" style="margin-top: 10px; padding: 20px; background: linear-gradient(135deg, #1a472a, #0d2818); border-radius: 12px; border: 2px solid #2d6b45; max-height: 500px; overflow-y: auto;">
-                            <div style="text-align: center; margin-bottom: 15px;">
-                                <h3 style="color: var(--accent-gold); margin-bottom: 5px;">Champion of Champions</h3>
-                                <p style="color: #8fbc8f; font-size: 0.85rem;">Founding Members: James Purtell, Jacob Spyer, Freddie Spyer, Oliver Clinch, Jack Posmore, Tom Bunce</p>
-                                <p style="color: #8fbc8f; font-size: 0.8rem; font-style: italic; margin-top: 6px;">The book of rules is the law and all motions shall be updated in the app for the following session.</p>
-                            </div>
-                            <ol style="line-height: 2; padding-left: 20px; margin-bottom: 0; color: #c8e6c9;">
-                                <li>If you leave before the end, chips are discarded (not given to any living being)</li>
-                                <li>At the end of the evening a new date is set for the next match</li>
-                                <li>Min buy in is £10. Buy ins then follow on the original amount</li>
-                                <li>Texas Hold'em will be the Poker game for the first game</li>
-                                <li>Over the course of the year wins will be documented — the winner will receive a cup bought by the Founding Members 🏆</li>
-                                <li>Upon sitting at the table all players must consume 1 shot of limoncello 🍋</li>
-                                <li style="margin-bottom: 8px;">Buy in consists of:
-                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.9rem;">
-                                        <span style="background: #FF6B00; color: white; padding: 4px 10px; border-radius: 6px; text-align: center;">3 × 1000 Orange</span>
-                                        <span style="background: #8B5CF6; color: white; padding: 4px 10px; border-radius: 6px; text-align: center;">4 × 500 Purple</span>
-                                        <span style="background: #1a1a2e; color: white; padding: 4px 10px; border-radius: 6px; text-align: center; border: 1px solid #555;">7 × 100 Black</span>
-                                        <span style="background: #3B82F6; color: white; padding: 4px 10px; border-radius: 6px; text-align: center;">5 × 50 Blue</span>
-                                        <span style="background: #22C55E; color: white; padding: 4px 10px; border-radius: 6px; text-align: center;">5 × 25 Green</span>
-                                    </div>
-                                </li>
-                                <li>NO COINS</li>
-                                <li>10:00 — Last buy ins, however this can be changed by the host</li>
-                                <li>No Consoling</li>
-                                <li>A Host can decide upon attire for the evening</li>
-                                <li>To create a new rule there must be a majority Vote & Motion to commit the rule</li>
-                                <li>No Trading of Coins for favours</li>
-                                <li>Suits on the last game 🎩</li>
-                                <li>Air BNB last game / where the first game hosted</li>
-                                <li>First blind stage consists of 10 games, 11th game double the blind, 3× rounds then double again</li>
-                            </ol>
-                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #2d6b45;">
-                                <strong style="color: var(--accent-gold);">Additional Rules:</strong>
-                                <ul style="line-height: 2; padding-left: 20px; margin-top: 8px; margin-bottom: 0; color: #c8e6c9;">
-                                    <li>No consulting</li>
-                                    <li>2 decks per game</li>
-                                    <li>To become a founder you have to win</li>
-                                    <li>No motions during a round</li>
-                                    <li>When a rule is broken — punishment is a shot 🥃</li>
-                                    <li>No more than 3 min between rounds — if more, a shot is owed</li>
-                                    <li>If anyone is proposed to trial a new game and it is majority voted in, it will be done at the next poker night</li>
-                                    <li>Once we get to 20:00, increments are 200</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hand Rankings Viewer -->
-                    <div style="margin-bottom: 20px;">
-                        <button class="btn poker-btn" onclick="togglePokerHands()" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px;">
-                            <span>🂡 Hand Rankings — Texas Hold'em</span>
-                            <span id="poker-hands-arrow" style="transition: transform 0.2s;">▼</span>
-                        </button>
-                        <div id="poker-hands-panel" class="hidden" style="margin-top: 10px; padding: 15px; background: linear-gradient(135deg, #1a472a, #0d2818); border-radius: 12px; border: 2px solid #2d6b45; max-height: 500px; overflow-y: auto;">
-                            <div style="text-align: center; margin-bottom: 12px;">
-                                <div style="font-family: 'Bangers', cursive; color: #f0d060; font-size: 1.1rem;">Best to Worst</div>
-                                <div style="font-size: 0.7rem; color: #6b8f7b;">Tap a hand to see details</div>
-                            </div>
-
-                            <div id="poker-hands-list">
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">1</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Royal Flush</div>
-                                        <div class="poker-hand-cards"><span class="suit-heart">A♥</span> <span class="suit-heart">K♥</span> <span class="suit-heart">Q♥</span> <span class="suit-heart">J♥</span> <span class="suit-heart">10♥</span></div>
-                                        <div class="poker-hand-detail hidden">A, K, Q, J, 10 all of the same suit. The best possible hand.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">2</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Straight Flush</div>
-                                        <div class="poker-hand-cards"><span class="suit-spade">9♠</span> <span class="suit-spade">8♠</span> <span class="suit-spade">7♠</span> <span class="suit-spade">6♠</span> <span class="suit-spade">5♠</span></div>
-                                        <div class="poker-hand-detail hidden">Five consecutive cards of the same suit. Higher top card wins ties.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">3</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Four of a Kind</div>
-                                        <div class="poker-hand-cards"><span class="suit-spade">K♠</span> <span class="suit-heart">K♥</span> <span class="suit-club">K♣</span> <span class="suit-diamond">K♦</span> <span class="suit-spade">2♠</span></div>
-                                        <div class="poker-hand-detail hidden">Four cards of the same rank. Higher rank wins. Fifth card (kicker) breaks ties.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">4</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Full House</div>
-                                        <div class="poker-hand-cards"><span class="suit-heart">Q♥</span> <span class="suit-diamond">Q♦</span> <span class="suit-spade">Q♠</span> <span class="suit-club">8♣</span> <span class="suit-heart">8♥</span></div>
-                                        <div class="poker-hand-detail hidden">Three of a kind plus a pair. The three-of-a-kind rank decides ties, then the pair.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">5</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Flush</div>
-                                        <div class="poker-hand-cards"><span class="suit-diamond">A♦</span> <span class="suit-diamond">J♦</span> <span class="suit-diamond">9♦</span> <span class="suit-diamond">6♦</span> <span class="suit-diamond">3♦</span></div>
-                                        <div class="poker-hand-detail hidden">Five cards of the same suit, not in sequence. Highest card wins ties, then next highest, etc.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">6</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Straight</div>
-                                        <div class="poker-hand-cards"><span class="suit-club">10♣</span> <span class="suit-diamond">9♦</span> <span class="suit-heart">8♥</span> <span class="suit-spade">7♠</span> <span class="suit-club">6♣</span></div>
-                                        <div class="poker-hand-detail hidden">Five consecutive cards of mixed suits. Ace can be high (A-K-Q-J-10) or low (5-4-3-2-A). Higher top card wins.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">7</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Three of a Kind</div>
-                                        <div class="poker-hand-cards"><span class="suit-spade">7♠</span> <span class="suit-heart">7♥</span> <span class="suit-diamond">7♦</span> <span class="suit-club">K♣</span> <span class="suit-spade">3♠</span></div>
-                                        <div class="poker-hand-detail hidden">Three cards of the same rank. Higher rank wins. Remaining cards (kickers) break ties.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">8</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">Two Pair</div>
-                                        <div class="poker-hand-cards"><span class="suit-heart">J♥</span> <span class="suit-spade">J♠</span> <span class="suit-diamond">4♦</span> <span class="suit-club">4♣</span> <span class="suit-heart">A♥</span></div>
-                                        <div class="poker-hand-detail hidden">Two different pairs. Higher pair wins ties, then second pair, then kicker.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">9</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">One Pair</div>
-                                        <div class="poker-hand-cards"><span class="suit-club">10♣</span> <span class="suit-diamond">10♦</span> <span class="suit-spade">A♠</span> <span class="suit-heart">8♥</span> <span class="suit-club">5♣</span></div>
-                                        <div class="poker-hand-detail hidden">Two cards of the same rank. Higher pair wins. Kickers break ties in order.</div>
-                                    </div>
-                                </div>
-
-                                <div class="poker-hand-row" onclick="this.querySelector('.poker-hand-detail').classList.toggle('hidden')">
-                                    <div class="poker-hand-rank">10</div>
-                                    <div class="poker-hand-info">
-                                        <div class="poker-hand-name">High Card</div>
-                                        <div class="poker-hand-cards"><span class="suit-spade">A♠</span> <span class="suit-heart">J♥</span> <span class="suit-diamond">8♦</span> <span class="suit-club">5♣</span> <span class="suit-heart">2♥</span></div>
-                                        <div class="poker-hand-detail hidden">No combination. Highest card wins. If tied, compare next highest, and so on.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="poker-field">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label style="display: flex; align-items: center; gap: 8px;">
-                                <span class="poker-ace">A<br>♠</span> Buy-in Amount (£)
-                            </label>
-                            <input type="number" id="poker-buyin" min="0" step="1" placeholder="e.g., 10" value="10">
-                        </div>
-                    </div>
-
-                    <div class="poker-field">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label style="display: flex; align-items: center; gap: 8px;">
-                                <span class="poker-ace red">A<br>♥</span> Add Players
-                            </label>
-                            
-                            <!-- Quick-add from profiles -->
-                            <div id="poker-profile-buttons" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Player List -->
-                    <div id="poker-players-list" style="margin-bottom: 15px;">
-                        <div style="color: var(--text-secondary); padding: 15px; text-align: center;">No players added yet</div>
-                    </div>
-
-                    <!-- Session Summary -->
-                    <div id="poker-session-summary" class="hidden poker-summary-bar">
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; position: relative;">
-                            <div>
-                                <div style="font-family: 'Bangers', cursive; font-size: 1.4rem; color: #f0d060;" id="poker-total-players">0</div>
-                                <div style="font-size: 0.75rem; color: #8fbc8f;">♣ Players</div>
-                            </div>
-                            <div>
-                                <div style="font-family: 'Bangers', cursive; font-size: 1.4rem; color: #4caf50;" id="poker-total-paid">0</div>
-                                <div style="font-size: 0.75rem; color: #8fbc8f;">♠ Paid</div>
-                            </div>
-                            <div>
-                                <div style="font-family: 'Bangers', cursive; font-size: 1.4rem; color: #f0d060;" id="poker-total-pot">£0</div>
-                                <div style="font-size: 0.75rem; color: #8fbc8f;">♦ Total Pot</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="poker-players-final" class="hidden">
-                        <div class="poker-field">
-                            <h4 style="margin: 0 0 8px; color: #f0d060; display: flex; align-items: center; gap: 8px;">
-                                <span class="poker-ace">A<br>♣</span> Placements & Final Amounts
-                            </h4>
-                            <div style="display: flex; gap: 10px; margin-bottom: 15px; justify-content: center; flex-wrap: wrap;">
-                                <span style="font-size: 0.75rem; color: #c8e6c9; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 20px;">🥇 1st = 3pts</span>
-                                <span style="font-size: 0.75rem; color: #c8e6c9; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 20px;">🥈🥉 2nd–3rd = 2pts</span>
-                                <span style="font-size: 0.75rem; color: #c8e6c9; background: rgba(0,0,0,0.25); padding: 4px 10px; border-radius: 20px;">4th–5th = 1pt</span>
-                            </div>
-                            <div id="poker-finals-list"></div>
-                            <button class="btn poker-btn" onclick="savePokerSession()" style="margin-top: 10px;">♠ Save Poker Session ♠</button>
-                        </div>
-                    </div>
-
-                    <button class="btn poker-btn" onclick="finishPokerSetup()" id="poker-setup-done">♦ Continue to Final Amounts ♦</button>
-                </div>
 
                 <button class="btn" id="save-game-btn" onclick="saveGame()">Save Game</button>
                 <datalist id="profile-names"></datalist>
@@ -1880,7 +1452,7 @@
 
         // State management
         let state = {
-            sports: ['Darts', 'Pool-US', 'Pool-UK', 'Badminton', 'Poker'],
+            sports: ['Darts', 'Pool-US', 'Pool-UK', 'Badminton'],
             games: [],
             practiceHistory: [],
             selectedSport: 'Darts',
@@ -1889,11 +1461,7 @@
             team2Players: [],
             profiles: [],
             currentUser: null,
-            notifications: false,
-            pokerSession: {
-                buyIn: 0,
-                players: []
-            }
+            notifications: false
         };
 
         // Sport rules database
@@ -1952,50 +1520,9 @@
                         <li><strong>Doubles Court:</strong> Wider service courts, shorter service length</li>
                     </ul>
                 `
-            },
-            'Poker': {
-                title: 'Champion of Champions — Poker Rules',
-                content: `
-                    <div style="margin-bottom: 15px;">
-                        <strong style="color: var(--accent-gold);">Founding Members:</strong> James Purtell, Jacob Spyer, Freddie Spyer, Oliver Clinch, Jack Posmore, Tom Bunce
-                    </div>
-                    <p style="font-style: italic; color: var(--text-secondary); margin-bottom: 15px;">The book of rules is the law and all motions shall be updated in the app for the following session.</p>
-                    <ol style="line-height: 2; padding-left: 20px;">
-                        <li>If you leave before the end, chips are discarded (not given to any living being)</li>
-                        <li>At the end of the evening a new date is set for the next match</li>
-                        <li>Min buy in is £10. Buy ins then follow on the original amount</li>
-                        <li>Texas Hold'em will be the Poker game for the first game</li>
-                        <li>Over the course of the year wins will be documented — the winner will receive a cup bought by the Founding Members</li>
-                        <li>Upon sitting at the table all players must consume 1 shot of limoncello 🍋</li>
-                        <li>Buy in consists of: 3×1000 (Orange), 4×500 (Purple), 7×100 (Black), 5×50 (Blue), 5×25 (Green)</li>
-                        <li>NO COINS</li>
-                        <li>10:00 — Last buy ins, however this can be changed by the host</li>
-                        <li>No Consoling</li>
-                        <li>A Host can decide upon attire for the evening</li>
-                        <li>To create a new rule there must be a majority Vote & Motion to commit the rule</li>
-                        <li>No Trading of Coins for favours</li>
-                        <li>Suits on the last game</li>
-                        <li>Air BNB last game / where the first game hosted</li>
-                        <li>First blind stage consists of 10 games, 11th game double the blind, 3× rounds then double again</li>
-                    </ol>
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border);">
-                        <strong style="color: var(--accent-gold);">Additional Rules:</strong>
-                        <ul style="line-height: 2; padding-left: 20px; margin-top: 8px;">
-                            <li>No consulting</li>
-                            <li>2 decks per game</li>
-                            <li>To become a founder you have to win</li>
-                            <li>No motions during a round</li>
-                            <li>When a rule is broken — punishment is a shot 🥃</li>
-                            <li>No more than 3 min between rounds — if more, a shot is owed</li>
-                            <li>If anyone is proposed to trial a new game and it is majority voted in, it will be done at the next poker night</li>
-                            <li>Once we get to 20:00, increments are 200</li>
-                        </ul>
-                    </div>
-                `
-            }
         };
 
-        // Darts game state
+                // Darts game state
         let dartsGame = {
             active: false,
             mode: 501,
@@ -2031,19 +1558,6 @@
                 // Update profile select dropdown
                 updateProfileSelect();
                 
-                // Always show login screen - pre-select last user from this device
-                const lastUser = localStorage.getItem('champion_lastUser');
-                if (lastUser) {
-                    const selectEl = document.getElementById('profile-select');
-                    if (selectEl) {
-                        for (let i = 0; i < selectEl.options.length; i++) {
-                            if (selectEl.options[i].value === lastUser) {
-                                selectEl.selectedIndex = i;
-                                break;
-                            }
-                        }
-                    }
-                }
                 document.getElementById('login-screen').classList.remove('hidden');
                 
                 updateUI();
@@ -2052,18 +1566,6 @@
                 console.error('❌ loadData error, trying offline backup:', error);
                 loadFromLocalBackup();
                 updateProfileSelect();
-                const lastUser = localStorage.getItem('champion_lastUser');
-                if (lastUser) {
-                    const selectEl = document.getElementById('profile-select');
-                    if (selectEl) {
-                        for (let i = 0; i < selectEl.options.length; i++) {
-                            if (selectEl.options[i].value === lastUser) {
-                                selectEl.selectedIndex = i;
-                                break;
-                            }
-                        }
-                    }
-                }
                 document.getElementById('login-screen').classList.remove('hidden');
                 updateUI();
                 renderPracticeHistory();
@@ -2205,6 +1707,37 @@
             const select = document.getElementById('profile-select');
             select.innerHTML = '<option value="">-- Choose Profile --</option>' +
                 state.profiles.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
+            
+            // Render profile buttons on login screen
+            const grid = document.getElementById('profile-buttons-grid');
+            const noMsg = document.getElementById('no-profiles-msg');
+            if (!grid) return;
+            
+            if (state.profiles.length === 0) {
+                grid.innerHTML = '';
+                if (noMsg) noMsg.classList.remove('hidden');
+                return;
+            }
+            
+            if (noMsg) noMsg.classList.add('hidden');
+            const lastUser = localStorage.getItem('champion_lastUser');
+            const colors = ['#fbbf24', '#22c55e', '#3b82f6', '#ef4444', '#a855f7', '#f97316', '#ec4899', '#14b8a6'];
+            
+            grid.innerHTML = state.profiles.map((p, i) => {
+                const color = colors[i % colors.length];
+                const initial = p.name.charAt(0).toUpperCase();
+                const isLast = p.name === lastUser;
+                return `
+                    <button onclick="loginUser('${p.name.replace(/'/g, "\\'")}')" 
+                        style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; border: 2px solid ${isLast ? color : 'var(--border)'}; background: ${isLast ? 'rgba(255,255,255,0.05)' : 'var(--bg-input)'}; cursor: pointer; transition: all 0.15s; text-align: left;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: ${color}; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; color: #1a1a2e; flex-shrink: 0;">${initial}</div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 1rem; color: var(--text-primary);">${p.name}</div>
+                            ${isLast ? '<div style="font-size: 0.65rem; color: var(--text-secondary);">Last played</div>' : ''}
+                        </div>
+                    </button>
+                `;
+            }).join('');
         }
 
         function showCreateProfile() {
@@ -2246,9 +1779,12 @@
             showMainApp();
         }
 
-        async function loginUser() {
-            const selectElement = document.getElementById('profile-select');
-            const userName = selectElement.value;
+        async function loginUser(userName) {
+            // Support both button click (name passed) and select fallback
+            if (!userName) {
+                const selectElement = document.getElementById('profile-select');
+                userName = selectElement ? selectElement.value : '';
+            }
 
             if (!userName) {
                 alert('Please select a profile');
@@ -2276,7 +1812,6 @@
             
             updateUserStats();
             updateProfileDatalist();
-            renderPokerProfileButtons();
         }
 
         async function logoutUser() {
@@ -2326,19 +1861,7 @@
             state.games.forEach(game => {
                 const sport = game.sport;
                 
-                if (game.sport === 'Poker' && game.players) {
-                    const playerData = game.players.find(p => p.name === userName);
-                    if (playerData) {
-                        sportStats[sport].games++;
-                        if (playerData.placementPoints !== undefined) {
-                            sportStats[sport].points += playerData.placementPoints;
-                            if (playerData.placement === 1) sportStats[sport].wins++;
-                        } else {
-                            if (game.winner === userName) sportStats[sport].wins++;
-                            sportStats[sport].points += (playerData.profitLoss || 0);
-                        }
-                    }
-                } else if (game.gameType === 'singles') {
+                if (game.gameType === 'singles') {
                     if (game.player1 === userName || game.player2 === userName) {
                         sportStats[sport].games++;
                         if (game.winner === userName) {
@@ -2379,7 +1902,6 @@
             container.innerHTML = activeSports.map(sport => {
                 const stats = sportStats[sport];
                 const winRate = stats.games > 0 ? ((stats.wins / stats.games) * 100).toFixed(1) : 0;
-                const isPokker = sport === 'Poker';
                 
                 return `
                     <div style="padding: 15px; background: var(--bg-input); border-radius: 12px; border: 2px solid var(--border);">
@@ -2388,7 +1910,7 @@
                             Games: ${stats.games}<br>
                             Wins: ${stats.wins}<br>
                             Win Rate: ${winRate}%<br>
-                            ${isPokker ? `Profit/Loss: £${stats.points.toFixed(2)}` : `Points: ${stats.points}`}
+                            Points: ${stats.points}
                         </div>
                     </div>
                 `;
@@ -2499,13 +2021,11 @@
                 
                 // Show/hide appropriate scoring sections
                 const dartsScoring = document.getElementById('darts-scoring');
-                const pokerScoring = document.getElementById('poker-scoring');
                 const regularScoring = document.getElementById('regular-scoring');
                 const saveBtn = document.getElementById('save-game-btn');
                 
                 // Hide all first
                 dartsScoring.classList.add('hidden');
-                pokerScoring.classList.add('hidden');
                 regularScoring.classList.add('hidden');
                 saveBtn.classList.remove('hidden');
                 // Default: show game type and players
@@ -2532,14 +2052,6 @@
                             return;
                         }
                     }
-                } else if (state.selectedSport === 'Poker') {
-                    pokerScoring.classList.remove('hidden');
-                    saveBtn.classList.add('hidden');
-                    // Hide game type and player sections — poker handles its own players
-                    document.getElementById('game-type-section').classList.add('hidden');
-                    document.getElementById('players-section').classList.add('hidden');
-                    document.getElementById('teams-section').classList.add('hidden');
-                    renderPokerProfileButtons();
                 } else {
                     regularScoring.classList.remove('hidden');
                 }
@@ -3867,258 +3379,7 @@
 
         // ==================== END PRACTICE MODE FUNCTIONS ====================
 
-        // ==================== POKER SESSION FUNCTIONS ====================
 
-        function togglePokerRules() {
-            const panel = document.getElementById('poker-rules-panel');
-            const arrow = document.getElementById('poker-rules-arrow');
-            panel.classList.toggle('hidden');
-            arrow.style.transform = panel.classList.contains('hidden') ? '' : 'rotate(180deg)';
-        }
-
-        function togglePokerHands() {
-            const panel = document.getElementById('poker-hands-panel');
-            const arrow = document.getElementById('poker-hands-arrow');
-            panel.classList.toggle('hidden');
-            arrow.style.transform = panel.classList.contains('hidden') ? '' : 'rotate(180deg)';
-        }
-
-        let pokerPlayers = [];
-
-        function renderPokerProfileButtons() {
-            const container = document.getElementById('poker-profile-buttons');
-            if (!container) return;
-            
-            if (state.profiles.length === 0) {
-                container.innerHTML = '<div style="color: #ff9800; font-size: 0.85rem; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px dashed #2d6b45; text-align: center;">⚠️ No profiles yet — go to <strong style="color: #f0d060;">Settings</strong> or the <strong style="color: #f0d060;">login screen</strong> to create profiles first.</div>';
-                return;
-            }
-
-            const addedNames = pokerPlayers.map(p => p.name);
-            
-            container.innerHTML = state.profiles.map(profile => {
-                const isAdded = addedNames.includes(profile.name);
-                return `
-                    <button onclick="${isAdded ? `removePokerPlayerByName('${profile.name.replace(/'/g, "\\'")}')` : `addPokerProfilePlayer('${profile.name.replace(/'/g, "\\'")}')`}" 
-                        style="padding: 8px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: 1px solid ${isAdded ? '#4caf50' : '#3d8b5a'}; transition: all 0.2s;
-                        background: ${isAdded ? 'rgba(76,175,80,0.2)' : 'linear-gradient(135deg, #2d6b45, #1a472a)'}; 
-                        color: ${isAdded ? '#4caf50' : '#f0d060'};">
-                        ${isAdded ? '✅ ' : '♠ '}${profile.name}
-                    </button>
-                `;
-            }).join('');
-        }
-
-        function addPokerProfilePlayer(name) {
-            if (pokerPlayers.find(p => p.name === name)) return;
-
-            const buyIn = parseFloat(document.getElementById('poker-buyin').value) || 0;
-            if (buyIn <= 0) {
-                alert('Please enter a buy-in amount first');
-                return;
-            }
-
-            pokerPlayers.push({
-                name: name,
-                boughtIn: true,
-                buyIns: 1,
-                buyInPerUnit: buyIn,
-                finalAmount: 0
-            });
-
-            renderPokerPlayers();
-        }
-
-        function removePokerPlayerByName(name) {
-            const index = pokerPlayers.findIndex(p => p.name === name);
-            if (index !== -1) {
-                pokerPlayers.splice(index, 1);
-                renderPokerPlayers();
-            }
-        }
-
-        const suits = ['♠', '♥', '♣', '♦'];
-
-        function renderPokerPlayers() {
-            const list = document.getElementById('poker-players-list');
-            const summary = document.getElementById('poker-session-summary');
-            
-            if (pokerPlayers.length === 0) {
-                list.innerHTML = '<div class="poker-empty-table"><div style="font-size: 2rem; margin-bottom: 8px;">♠ ♥ ♣ ♦</div>No players at the table yet</div>';
-                summary.classList.add('hidden');
-                renderPokerProfileButtons();
-                return;
-            }
-
-            summary.classList.remove('hidden');
-            const paid = pokerPlayers.filter(p => p.buyIns > 0);
-            const totalBuyIns = pokerPlayers.reduce((sum, p) => sum + p.buyIns, 0);
-            const totalPot = pokerPlayers.reduce((sum, p) => sum + (p.buyIns * p.buyInPerUnit), 0);
-            document.getElementById('poker-total-players').textContent = pokerPlayers.length;
-            document.getElementById('poker-total-paid').textContent = paid.length;
-            document.getElementById('poker-total-pot').textContent = '£' + totalPot.toFixed(0);
-
-            list.innerHTML = pokerPlayers.map((player, index) => {
-                const totalOwed = player.buyIns * player.buyInPerUnit;
-                const isPaid = player.buyIns > 0;
-                const suit = suits[index % 4];
-                const isRed = suit === '♥' || suit === '♦';
-                return `
-                <div class="poker-player-card ${isPaid ? 'poker-player-paid' : 'poker-player-unpaid'}" data-suit="${suit}">
-                    <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
-                        <div class="poker-ace ${isRed ? 'red' : ''}" style="font-size: 0.65rem;">A<br>${suit}</div>
-                        <div>
-                            <div style="font-weight: 700; font-size: 1rem; color: #f0f0f0;">${player.name}</div>
-                            <div style="font-size: 0.8rem; margin-top: 2px; color: ${isPaid ? '#4caf50' : '#ff9800'};">
-                                ${isPaid ? '✅ £' + totalOwed.toFixed(0) + ' (' + player.buyIns + ' buy-in' + (player.buyIns > 1 ? 's' : '') + ')' : '❌ Not Paid'}
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 6px;">
-                        <button onclick="changePokerBuyIns(${index}, -1)" style="background: rgba(0,0,0,0.3); color: #c8e6c9; border: 1px solid #2d6b45; width: 32px; height: 32px; border-radius: 6px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">−</button>
-                        <span style="font-weight: 700; min-width: 20px; text-align: center; color: #f0d060;">${player.buyIns}</span>
-                        <button onclick="changePokerBuyIns(${index}, 1)" style="background: #2d6b45; color: white; border: none; width: 32px; height: 32px; border-radius: 6px; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;">+</button>
-                        <button onclick="removePokerPlayer(${index})" style="background: transparent; color: #8fbc8f; border: 1px solid #2d6b45; padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; margin-left: 4px;">✕</button>
-                    </div>
-                </div>
-                `;
-            }).join('');
-            
-            renderPokerProfileButtons();
-        }
-
-        function changePokerBuyIns(index, delta) {
-            const newCount = pokerPlayers[index].buyIns + delta;
-            if (newCount < 0) return;
-            pokerPlayers[index].buyIns = newCount;
-            pokerPlayers[index].boughtIn = newCount > 0;
-            renderPokerPlayers();
-        }
-
-        function togglePokerPaid(index) {
-            const buyIn = parseFloat(document.getElementById('poker-buyin').value) || 0;
-            if (pokerPlayers[index].buyIns > 0) {
-                pokerPlayers[index].buyIns = 0;
-                pokerPlayers[index].boughtIn = false;
-            } else {
-                pokerPlayers[index].buyIns = 1;
-                pokerPlayers[index].boughtIn = true;
-                pokerPlayers[index].buyInPerUnit = buyIn;
-            }
-            renderPokerPlayers();
-        }
-
-        function removePokerPlayer(index) {
-            pokerPlayers.splice(index, 1);
-            renderPokerPlayers();
-        }
-
-        function finishPokerSetup() {
-            if (pokerPlayers.length < 2) {
-                alert('Please add at least 2 players');
-                return;
-            }
-
-            document.getElementById('poker-setup-done').classList.add('hidden');
-            document.getElementById('poker-players-final').classList.remove('hidden');
-            
-            const maxPlace = Math.min(pokerPlayers.length, 5);
-            const finalsList = document.getElementById('poker-finals-list');
-            finalsList.innerHTML = pokerPlayers.map((player, index) => {
-                const totalBuyIn = player.buyIns * player.buyInPerUnit;
-                let options = '<option value="0">—</option>';
-                for (let i = 1; i <= maxPlace; i++) {
-                    const pts = i === 1 ? 3 : i <= 3 ? 2 : 1;
-                    const medal = i === 1 ? '🥇' : i === 2 ? '🥈' : i === 3 ? '🥉' : '';
-                    options += `<option value="${i}">${medal} ${i}${i===1?'st':i===2?'nd':i===3?'rd':'th'} (${pts}pts)</option>`;
-                }
-                return `
-                <div style="background: rgba(0,0,0,0.2); border-radius: 10px; padding: 12px; margin-bottom: 10px; border: 1px solid #2d6b45;">
-                    <div style="font-weight: 700; color: #f0f0f0; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                        <span class="poker-ace ${index % 2 === 1 ? 'red' : ''}" style="font-size: 0.55rem;">A<br>${suits[index % 4]}</span>
-                        ${player.name}
-                        <span style="color: #8fbc8f; font-size: 0.8rem; font-weight: 400;">£${totalBuyIn.toFixed(0)} (${player.buyIns}× buy-in)</span>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                        <div>
-                            <label style="font-size: 0.75rem; color: #8fbc8f;">Placement</label>
-                            <select id="poker-place-${index}" style="width: 100%; padding: 8px; background: rgba(0,0,0,0.3); color: #f0f0f0; border: 1px solid #2d6b45; border-radius: 6px;">
-                                ${options}
-                            </select>
-                        </div>
-                        <div>
-                            <label style="font-size: 0.75rem; color: #8fbc8f;">Final Amount (£)</label>
-                            <input type="number" id="poker-final-${index}" min="0" step="0.01" placeholder="0.00" 
-                                   value="${totalBuyIn}" style="background: rgba(0,0,0,0.3) !important; border-color: #2d6b45 !important; color: #f0f0f0 !important;">
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
-        }
-
-        async function savePokerSession() {
-            // Check for duplicate placements
-            const placements = pokerPlayers.map((_, i) => parseInt(document.getElementById(`poker-place-${i}`).value) || 0);
-            const usedPlacements = placements.filter(p => p > 0);
-            const hasDuplicates = usedPlacements.length !== new Set(usedPlacements).size;
-            if (hasDuplicates) {
-                alert('Each placement can only be assigned to one player');
-                return;
-            }
-
-            // Calculate final amounts, placements, and points
-            const results = pokerPlayers.map((player, index) => {
-                const totalBuyIn = player.buyIns * player.buyInPerUnit;
-                const finalAmount = parseFloat(document.getElementById(`poker-final-${index}`).value) || 0;
-                const profitLoss = finalAmount - totalBuyIn;
-                const placement = parseInt(document.getElementById(`poker-place-${index}`).value) || 0;
-                let placementPoints = 0;
-                if (placement === 1) placementPoints = 3;
-                else if (placement >= 2 && placement <= 3) placementPoints = 2;
-                else if (placement >= 4 && placement <= 5) placementPoints = 1;
-                
-                return {
-                    name: player.name,
-                    boughtIn: player.buyIns > 0,
-                    buyIns: player.buyIns,
-                    buyInPerUnit: player.buyInPerUnit,
-                    buyIn: totalBuyIn,
-                    finalAmount: finalAmount,
-                    profitLoss: profitLoss,
-                    placement: placement,
-                    placementPoints: placementPoints
-                };
-            });
-
-            const buyIn = parseFloat(document.getElementById('poker-buyin').value);
-            const winner = results.find(p => p.placement === 1);
-
-            const game = {
-                sport: 'Poker',
-                gameType: 'poker-session',
-                date: new Date().toISOString(),
-                buyIn: buyIn,
-                players: results,
-                winner: winner ? winner.name : results.reduce((max, p) => p.profitLoss > max.profitLoss ? p : max, results[0]).name
-            };
-
-            state.games.push(game);
-            await saveData();
-
-            alert('Poker session saved!');
-            
-            // Reset
-            pokerPlayers = [];
-            document.getElementById('poker-buyin').value = '10';
-            renderPokerPlayers();
-            document.getElementById('poker-setup-done').classList.remove('hidden');
-            document.getElementById('poker-players-final').classList.add('hidden');
-            
-            updateUserStats(); // Update user's stats after saving
-        }
-
-        // ==================== END POKER SESSION FUNCTIONS ====================
 
         async function saveGame() {
             // If darts game is active, don't allow saving through this form
@@ -4244,44 +3505,13 @@
             const playerStats = {};
             
             state.games.forEach(game => {
-                // Handle poker sessions differently
-                if (game.sport === 'Poker' && game.players) {
-                    game.players.forEach(player => {
-                        if (!playerStats[player.name]) {
-                            playerStats[player.name] = { points: 0, wins: 0, draws: 0, losses: 0, games: 0, pokerProfit: 0 };
-                        }
-                        
-                        playerStats[player.name].games++;
-                        playerStats[player.name].pokerProfit = (playerStats[player.name].pokerProfit || 0) + player.profitLoss;
-                        
-                        // Use placement points if available, fall back to old system
-                        if (player.placementPoints !== undefined) {
-                            playerStats[player.name].points += player.placementPoints;
-                            if (player.placement === 1) playerStats[player.name].wins++;
-                            else if (player.placement === 0 || !player.placement) playerStats[player.name].losses++;
-                        } else {
-                            // Legacy support for old sessions
-                            if (game.winner === player.name) {
-                                playerStats[player.name].wins++;
-                                playerStats[player.name].points += 3;
-                            } else if (player.profitLoss === 0) {
-                                playerStats[player.name].draws++;
-                                playerStats[player.name].points += 1;
-                            } else {
-                                playerStats[player.name].losses++;
-                            }
-                        }
-                    });
-                    return;
-                }
-                
                 // Handle singles
                 if (game.gameType === 'singles') {
                     const players = [game.player1, game.player2];
                     
                     players.forEach(player => {
                         if (!playerStats[player]) {
-                            playerStats[player] = { points: 0, wins: 0, draws: 0, losses: 0, games: 0, pokerProfit: 0 };
+                            playerStats[player] = { points: 0, wins: 0, draws: 0, losses: 0, games: 0 };
                         }
                         
                         playerStats[player].games++;
@@ -4304,7 +3534,7 @@
                     
                     allPlayers.forEach(player => {
                         if (!playerStats[player]) {
-                            playerStats[player] = { points: 0, wins: 0, draws: 0, losses: 0, games: 0, pokerProfit: 0 };
+                            playerStats[player] = { points: 0, wins: 0, draws: 0, losses: 0, games: 0 };
                         }
                         
                         playerStats[player].games++;
@@ -4471,25 +3701,7 @@
                                 <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Mode: ${game.mode || '501'}${modeText}</div>
                             </div>
                         `;
-                    } else if (game.sport === 'Poker') {
-                        const playerResults = game.players
-                            .slice()
-                            .sort((a, b) => (a.placement || 99) - (b.placement || 99))
-                            .map(p => {
-                                const medal = p.placement === 1 ? '🥇' : p.placement === 2 ? '🥈' : p.placement === 3 ? '🥉' : p.placement ? `${p.placement}th` : '—';
-                                const pts = p.placementPoints ? `+${p.placementPoints}pt${p.placementPoints > 1 ? 's' : ''}` : '';
-                                return `<div style="padding: 4px 0; display: flex; justify-content: space-between;">
-                                    <span>${medal} ${p.name}</span>
-                                    <span style="color: ${p.profitLoss >= 0 ? 'var(--accent-green)' : 'var(--accent-orange)'};">${p.profitLoss >= 0 ? '+' : ''}£${p.profitLoss.toFixed(2)} ${pts ? '<span style="color: var(--accent-gold); font-size: 0.8rem;">(' + pts + ')</span>' : ''}</span>
-                                </div>`;
-                            }).join('');
-                        scoreText = `
-                            <div class="game-score">
-                                <div style="margin-bottom: 8px;"><strong>Buy-in: £${game.buyIn.toFixed(2)}</strong></div>
-                                ${playerResults}
-                            </div>
-                        `;
-                    } else {
+                                        } else {
                         scoreText = `
                             <div class="game-score">
                                 <span class="${game.winner === game.player1 ? 'winner' : ''}">${game.player1}</span>
@@ -4557,7 +3769,7 @@
                 await firebaseStorage.delete('notifications');
                 await firebaseStorage.delete('practiceHistory');
                 localStorage.removeItem('champion_lastUser');
-                state.sports = ['Darts', 'Pool-US', 'Pool-UK', 'Badminton', 'Poker'];
+                state.sports = ['Darts', 'Pool-US', 'Pool-UK', 'Badminton'];
                 state.games = [];
                 state.practiceHistory = [];
                 state.profiles = [];
