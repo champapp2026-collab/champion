@@ -55,19 +55,9 @@
     manifestLink.href = manifestUrl;
     document.head.appendChild(manifestLink);
 
-    // PWA: Register service worker from Blob
+    // PWA: Register proper service worker
     if ('serviceWorker' in navigator) {
-        const swCode = `
-            const CACHE_NAME = 'champ-v1';
-            self.addEventListener('install', e => { self.skipWaiting(); });
-            self.addEventListener('activate', e => { e.waitUntil(clients.claim()); });
-            self.addEventListener('fetch', e => {
-                e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
-            });
-        `;
-        const swBlob = new Blob([swCode], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(swBlob);
-        navigator.serviceWorker.register(swUrl).catch(() => {});
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW registration failed:', err));
     }
 
     // PWA: Install prompt
@@ -1781,14 +1771,21 @@
         async function verifyAndConnect() {
             const testPath = getCollectionPath();
             
+            if (!navigator.onLine) {
+                updateConnectionStatus('offline');
+                document.getElementById('group-code-screen').classList.add('hidden');
+                document.getElementById('login-screen').classList.remove('hidden');
+                await loadData();
+                return;
+            }
+
             try {
                 // Write a test value and read it back
                 await db.collection(testPath).doc('_ping').set({ test: true, time: new Date().toISOString() });
                 const readBack = await db.collection(testPath).doc('_ping').get();
                 
                 if (readBack.exists) {
-                    document.getElementById('firebase-status').innerHTML = '🟢 Connected to Firebase';
-                    document.getElementById('firebase-status').style.color = 'var(--accent-green)';
+                    updateConnectionStatus('online');
                 } else {
                     console.error('❌ Firebase write succeeded but read failed');
                     document.getElementById('firebase-status').innerHTML = '🟡 Firebase issue — check console';
@@ -1802,8 +1799,7 @@
                     document.getElementById('firebase-status').style.color = 'var(--accent-orange)';
                     alert('Firebase permission denied!\n\nYour Firestore rules need to allow access to:\n' + testPath + '\n\nUpdate your rules to:\nmatch /groups/{groupCode}/data/{document} {\n  allow read, write: if true;\n}');
                 } else {
-                    document.getElementById('firebase-status').innerHTML = '🔴 Firebase error — check console';
-                    document.getElementById('firebase-status').style.color = 'var(--accent-orange)';
+                    updateConnectionStatus('offline');
                 }
             }
 
@@ -1813,6 +1809,11 @@
             
             // Load data for this group
             await loadData();
+            
+            // If there are pending offline changes, sync them
+            if (navigator.onLine && localStorage.getItem('champion_needsSync') === 'true') {
+                syncOfflineData();
+            }
         }
 
         function changeGroupCode() {
@@ -2023,7 +2024,9 @@
                     state.notifications = JSON.parse(notificationsData.value);
                     document.getElementById('notifications-toggle').checked = state.notifications;
                 }
-                
+
+                // Save to localStorage as offline backup
+                saveToLocalBackup();
                 
                 // Update profile select dropdown
                 updateProfileSelect();
@@ -2046,40 +2049,154 @@
                 updateUI();
                 renderPracticeHistory();
             } catch (error) {
-                console.error('❌ loadData error:', error);
+                console.error('❌ loadData error, trying offline backup:', error);
+                loadFromLocalBackup();
+                updateProfileSelect();
+                const lastUser = localStorage.getItem('champion_lastUser');
+                if (lastUser) {
+                    const selectEl = document.getElementById('profile-select');
+                    if (selectEl) {
+                        for (let i = 0; i < selectEl.options.length; i++) {
+                            if (selectEl.options[i].value === lastUser) {
+                                selectEl.selectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                document.getElementById('login-screen').classList.remove('hidden');
                 updateUI();
                 renderPracticeHistory();
             }
         }
 
-        // Save data to storage
+        // Save local backup to localStorage
+        function saveToLocalBackup() {
+            try {
+                localStorage.setItem('champion_backup', JSON.stringify({
+                    sports: state.sports,
+                    games: state.games,
+                    profiles: state.profiles,
+                    notifications: state.notifications,
+                    practiceHistory: state.practiceHistory,
+                    savedAt: new Date().toISOString()
+                }));
+            } catch (e) { console.log('localStorage backup failed:', e); }
+        }
+
+        // Load from local backup when offline
+        function loadFromLocalBackup() {
+            try {
+                const backup = localStorage.getItem('champion_backup');
+                if (backup) {
+                    const data = JSON.parse(backup);
+                    state.sports = data.sports || state.sports;
+                    state.games = data.games || [];
+                    state.profiles = data.profiles || [];
+                    state.notifications = data.notifications || false;
+                    state.practiceHistory = data.practiceHistory || [];
+                    console.log('📦 Loaded from offline backup (saved:', data.savedAt, ')');
+                    updateConnectionStatus('offline');
+                }
+            } catch (e) { console.log('localStorage load failed:', e); }
+        }
+
+        // Save data to storage (with offline fallback)
         async function saveData() {
+            // Always save local backup first
+            saveToLocalBackup();
+
+            if (!navigator.onLine) {
+                console.log('📴 Offline — saved locally, will sync when back online');
+                localStorage.setItem('champion_needsSync', 'true');
+                updateConnectionStatus('offline');
+                return;
+            }
+
             try {
                 await firebaseStorage.set('sports', JSON.stringify(state.sports));
                 await firebaseStorage.set('games', JSON.stringify(state.games));
                 await firebaseStorage.set('profiles', JSON.stringify(state.profiles));
                 await firebaseStorage.set('notifications', JSON.stringify(state.notifications));
+                localStorage.setItem('champion_needsSync', 'false');
                 console.log('✅ Data saved successfully to Firebase');
             } catch (error) {
                 console.error('❌ Error saving data:', error);
-                console.error('❌ Error code:', error.code);
-                console.error('❌ Error message:', error.message);
-                if (error.message && error.message.includes('not ready')) {
-                    alert('Firebase is not connected. Please check your Firebase config and group code.');
-                } else if (error.code === 'permission-denied') {
+                localStorage.setItem('champion_needsSync', 'true');
+                updateConnectionStatus('offline');
+                if (error.code === 'permission-denied') {
                     alert('Firebase permission denied!\n\nYour Firestore rules are blocking writes to:\n' + getCollectionPath() + '\n\nPlease update your Firestore rules.');
-                } else {
-                    alert('Error saving data: ' + (error.message || error) + '\nCheck browser console (F12) for details.');
                 }
             }
         }
 
+        // Sync offline changes to Firebase when back online
+        async function syncOfflineData() {
+            if (localStorage.getItem('champion_needsSync') !== 'true') return;
+            
+            console.log('🔄 Back online — syncing offline changes to Firebase...');
+            updateConnectionStatus('syncing');
+
+            try {
+                // Load local backup into state
+                loadFromLocalBackup();
+                
+                await firebaseStorage.set('sports', JSON.stringify(state.sports));
+                await firebaseStorage.set('games', JSON.stringify(state.games));
+                await firebaseStorage.set('profiles', JSON.stringify(state.profiles));
+                await firebaseStorage.set('notifications', JSON.stringify(state.notifications));
+                if (state.practiceHistory.length > 0) {
+                    await firebaseStorage.set('practiceHistory', JSON.stringify(state.practiceHistory));
+                }
+                
+                localStorage.setItem('champion_needsSync', 'false');
+                console.log('✅ Offline data synced to Firebase');
+                updateConnectionStatus('online');
+            } catch (error) {
+                console.error('❌ Sync failed:', error);
+                updateConnectionStatus('offline');
+            }
+        }
+
+        // Update connection status indicator
+        function updateConnectionStatus(status) {
+            const el = document.getElementById('firebase-status');
+            if (!el) return;
+            if (status === 'online') {
+                el.innerHTML = '🟢 Connected to Firebase';
+                el.style.color = 'var(--accent-green)';
+            } else if (status === 'syncing') {
+                el.innerHTML = '🔄 Syncing offline changes...';
+                el.style.color = 'var(--accent-gold)';
+            } else {
+                el.innerHTML = '📴 Offline — changes saved locally';
+                el.style.color = 'var(--accent-orange)';
+            }
+        }
+
+        // Listen for online/offline events
+        window.addEventListener('online', () => {
+            console.log('🌐 Back online');
+            updateConnectionStatus('online');
+            syncOfflineData();
+        });
+        window.addEventListener('offline', () => {
+            console.log('📴 Gone offline');
+            updateConnectionStatus('offline');
+        });
+
         // Save practice data separately — never touches games/leaderboards
         async function savePracticeData() {
+            saveToLocalBackup();
+            if (!navigator.onLine) {
+                localStorage.setItem('champion_needsSync', 'true');
+                return;
+            }
             try {
                 await firebaseStorage.set('practiceHistory', JSON.stringify(state.practiceHistory));
             } catch (error) {
                 console.error('Error saving practice data:', error);
+                localStorage.setItem('champion_needsSync', 'true');
             }
         }
 
